@@ -1,11 +1,14 @@
-package personnage;
+package Personnage;
 
 public abstract class Personnage {
-
-    private String name;
+	private String name;
     private int hp;
     private int maxHp;
     private int attackPoints;
+    
+    public Personnage() {
+    	
+    }
 
     public String getName() {
         return name;

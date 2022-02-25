@@ -1,4 +1,5 @@
-package personnage;
+package Personnage;
 
-public class Humain extends Personnage{
+public class Humain extends Personnage {
+
 }
