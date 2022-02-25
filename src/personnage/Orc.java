@@ -1,4 +1,4 @@
 package personnage;
 
-public class Orc {
+public class Orc extends Personnage {
 }

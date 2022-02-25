@@ -1,4 +1,4 @@
 package personnage;
 
-public class Humain {
+public class Humain extends Personnage{
 }
