@@ -1,5 +1,5 @@
 package personnage;
 
-public class Orc extends Personnage {
+public class Orc {
 
 }
