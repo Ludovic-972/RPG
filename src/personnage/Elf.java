@@ -15,16 +15,9 @@ public class Elf extends Joueur {
         return specialite;
     }
 
-    public void setSpecialite(Specialite specialite) {
-        this.specialite = specialite;
-    }
-
     public String getClan() {
         return clan;
     }
 
-    public void setClan(String clan) {
-        this.clan = clan;
-    }
 
 }
