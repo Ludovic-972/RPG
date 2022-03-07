@@ -5,8 +5,4 @@ public class Humain extends Joueur {
        super(name, hp, maxHp, attackPoints);
     }
 
-    @Override
-    public void attack(Ennemi ennemi) {
-
-    }
 }

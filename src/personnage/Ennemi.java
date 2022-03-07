@@ -1,6 +1,6 @@
 package personnage;
 
-public abstract class Ennemi implements Personnage{
+public abstract class Ennemi implements Personage {
     private String name;
     private int hp;
     private int maxHp;
@@ -13,5 +13,50 @@ public abstract class Ennemi implements Personnage{
         this.attackPoints = attackPoints;
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public int getMaxHp() {
+        return maxHp;
+    }
+
+    public void setMaxHp(int maxHp) {
+        this.maxHp = maxHp;
+    }
+
+    public int getAttackPoints() {
+        return attackPoints;
+    }
+
+    public void setAttackPoints(int attackPoints) {
+        this.attackPoints = attackPoints;
+    }
+
+    @Override
+    public void attack(Personage ennemi) {
+        ennemi.receiveDamages(getAttackPoints());
+    }
+
+    @Override
+    public void receiveDamages(int damage) {
+        this.hp = this.hp-damage;
+        if(getHp() == 0){
+            System.out.println("L'ennemi a été vaincu.");
+        } else {
+            System.out.println("Il reste " + getHp() + "point(s) de vie");
+        }
+    }
 }

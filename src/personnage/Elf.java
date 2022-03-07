@@ -27,8 +27,4 @@ public class Elf extends Joueur {
         this.clan = clan;
     }
 
-    @Override
-    public void attack(Ennemi ennemi) {
-
-    }
 }
