@@ -19,4 +19,8 @@ public class Elf extends Joueur {
     }
 
 
+    @Override
+    public void attack(Personage ennemi) {
+        ennemi.receiveDamages(this.getAttackPoints());
+    }
 }

@@ -13,6 +13,7 @@ public class Orc extends Ennemi {
     private TypeMonstre type;
     private List<Item> items;
     private Materiaux materiauBase;
+
     public Orc(String name, int hp, int maxHp, int attackPoints, TypeMonstre type) {
         super(name, hp, maxHp, attackPoints);
         this.items = new ArrayList<>();

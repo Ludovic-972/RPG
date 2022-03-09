@@ -9,12 +9,20 @@ public abstract class Joueur implements Personage {
     private int attackPoints;
     private Sac leSac;
 
+    public Sac getLeSac() {
+        return leSac;
+    }
+
+    public void setLeSac(Sac leSac) {
+        this.leSac = leSac;
+    }
+
     public Joueur(String name, int hp, int maxHp, int attackPoints){
         this.name = name;
         this.hp = hp;
         this.maxHp = maxHp;
         this.attackPoints = attackPoints;
-        leSac = new Sac();
+        this.leSac = new Sac();
     }
 
     public String getName() {
@@ -49,17 +57,13 @@ public abstract class Joueur implements Personage {
         this.attackPoints = attackPoints;
     }
 
-    public void attack(Personage ennemi){
+    public void attack(Ennemi ennemi){
         ennemi.receiveDamages(this.getAttackPoints());
     }
 
     public void receiveDamages(int damages){
         this.hp = this.hp-damages;
-        if(this.getHp() <= 0){
-            System.out.println("Vous avez été vaincu");
-        } else {
-            System.out.println("Il vous reste " + getHp() + "point(s) de vie");
-        }
+
     }
 
 }

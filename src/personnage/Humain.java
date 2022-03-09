@@ -5,4 +5,8 @@ public class Humain extends Joueur {
        super(name, hp, maxHp, attackPoints);
     }
 
+    @Override
+    public void attack(Personage ennemi) {
+        ennemi.receiveDamages(this.getAttackPoints());
+    }
 }

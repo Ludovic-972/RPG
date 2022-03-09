@@ -13,6 +13,10 @@ public abstract class Ennemi implements Personage {
         this.attackPoints = attackPoints;
     }
 
+    public Ennemi(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
@@ -53,10 +57,6 @@ public abstract class Ennemi implements Personage {
     @Override
     public void receiveDamages(int damage) {
         this.hp = this.hp-damage;
-        if(this.getHp() <= 0){
-            System.out.println("L'ennemi a été vaincu.");
-        } else {
-            System.out.println("Il reste " + getHp() + "point(s) de vie");
-        }
+
     }
 }
