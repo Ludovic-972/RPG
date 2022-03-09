@@ -1,8 +1,8 @@
 package personnage;
 
 public class Humain extends Joueur {
-    public Humain(String name, int hp, int maxHp, int attackPoints){
-       super(name, hp, maxHp, attackPoints);
+    public Humain(String name, int hp, int level, int XPNeeded, int maxHp, int attackPoints){
+        super(name, level ,XPNeeded, hp, maxHp, attackPoints);
     }
 
     @Override
