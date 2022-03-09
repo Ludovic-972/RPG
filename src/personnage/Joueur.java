@@ -55,7 +55,7 @@ public abstract class Joueur implements Personage {
 
     public void receiveDamages(int damages){
         this.hp = this.hp-damages;
-        if(this.getHp() == 0){
+        if(this.getHp() <= 0){
             System.out.println("Vous avez été vaincu");
         } else {
             System.out.println("Il vous reste " + getHp() + "point(s) de vie");
