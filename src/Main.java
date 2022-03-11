@@ -104,6 +104,17 @@ public class Main {
 
     private static void startBossFight() {
         // Créer boss fight Golem
+        ennemi = new Golem("Goldmann", TypeMonstre.BOSS);
+        System.out.println("Vous tombez nez à nez avec un " + ennemi.getClass().getName().substring(11));
+        inFight = true;
+        while (inFight) {
+            System.out.println(j1.getName() + "                              " + ennemi.getName()
+                    + "\nHP : " + j1.getHp() + "/" + j1.getMaxHp() + "                           HP : " + ennemi.getHp() + "/" + ennemi.getMaxHp()
+                    + "\nATK : " + j1.getAttackPoints() + "                             ATK : " + ennemi.getAttackPoints());
+            System.out.println("Choississez une action : \n1.Ouvrir le sac \n2.Attaquer");
+            fightActions();
+        }
+
     }
 
     private static void startHighLevelFight() {
@@ -223,6 +234,8 @@ public class Main {
     private static void endFight() {
         if (ennemi.getHp() <= 0) {
             System.out.println(ennemi.getName() + " a été vaincu(e) ! ");
+            System.out.println("Vous recevez " + ennemi.getXP() + " point(s) d'expérience !");
+
             j1.addExperience(ennemi);
             if(ennemi.getItems() != null) {
                 for (int i = 0; i < ennemi.getItems().size(); i++) {

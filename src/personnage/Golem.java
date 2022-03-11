@@ -22,6 +22,19 @@ public class Golem extends  Ennemi{
         this.typeElem = typeElem;
     }
 
+    public Golem(String name, TypeMonstre type)
+    {
+        super(name);
+        this.items = new ArrayList<>();
+        this.materiauBase = new Materiaux(TypeMateriaux.AILE);
+        items.add(materiauBase);
+        this.type = type;
+        this.setHp(500);
+        this.setMaxHp(500);
+        this.setXP(100);
+        this.setAttackPoints(80);
+    }
+
 
     public TypeElement getTypeElem() {
         return typeElem;
