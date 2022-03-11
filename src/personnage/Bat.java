@@ -3,34 +3,27 @@ package personnage;
 import objects.items.Item;
 import objects.items.Materiaux;
 import objects.items.TypeMateriaux;
-import objects.sac.Sac;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Orc extends Ennemi {
-
-    private TypeMonstre type;
+public class Bat extends Ennemi{
     private List<Item> items;
     private Materiaux materiauBase;
+    private TypeMonstre type;
 
-    public Orc(String name, int hp, int maxHp, int attackPoints, TypeMonstre type, int XP) {
+    public Bat(String name, int hp, int maxHp, int attackPoints, int XP) {
         super(name, hp, maxHp, attackPoints, XP);
-        this.items = new ArrayList<>();
-        this.materiauBase = new Materiaux(TypeMateriaux.CROC);
-        items.add(materiauBase);
-        this.type = type;
     }
-
-    public Orc(String name, TypeMonstre type) {
+    public Bat(String name, TypeMonstre type) {
         super(name);
         this.items = new ArrayList<>();
         this.materiauBase = new Materiaux(TypeMateriaux.AILE);
         items.add(materiauBase);
         this.type = type;
         setStats();
-    }
 
+    }
 
 
     public Materiaux getMateriauBase() {
@@ -48,27 +41,29 @@ public class Orc extends Ennemi {
     public void setType(TypeMonstre type) {
         this.type = type;
     }
+
+
     public void setStats()
     {
         switch(type)
         {
             case BASNIVEAU:
-                this.setHp(10);
-                this.setAttackPoints(3);
-                this.setMaxHp(10);
-                this.setXP(3);
+                this.setHp(15);
+                this.setAttackPoints(2);
+                this.setMaxHp(15);
+                this.setXP(2);
                 break;
             case HAUTNIVEAU:
-                this.setHp(25);
-                this.setAttackPoints(8);
+                this.setHp(30);
+                this.setAttackPoints(10);
                 this.setMaxHp(30);
-                this.setXP(15);
+                this.setXP(8);
                 break;
             case BOSS:
-                this.setHp(120);
-                this.setAttackPoints(40);
+                this.setHp(150);
+                this.setAttackPoints(30);
                 this.setMaxHp(150);
-                this.setXP(60);
+                this.setXP(50);
                 break;
 
         }

@@ -13,8 +13,8 @@ public class Golem extends  Ennemi{
     private TypeElement typeElem;
     private Materiaux materiauBase;
 
-    public Golem(String name, int hp, int maxHp, int attackPoints, TypeMonstre type, TypeElement typeElem) {
-        super(name, hp, maxHp, attackPoints);
+    public Golem(String name, int hp, int maxHp, int attackPoints, TypeMonstre type, TypeElement typeElem, int XP) {
+        super(name, hp, maxHp, attackPoints, XP);
         items = new ArrayList<>();
         materiauBase = new Materiaux(TypeMateriaux.MORCEAU_DE_PIERRE);
         items.add(materiauBase);
@@ -22,9 +22,19 @@ public class Golem extends  Ennemi{
         this.typeElem = typeElem;
     }
 
-    public List<Item> getItems() {
-        return items;
+    public Golem(String name, TypeMonstre type)
+    {
+        super(name);
+        this.items = new ArrayList<>();
+        this.materiauBase = new Materiaux(TypeMateriaux.AILE);
+        items.add(materiauBase);
+        this.type = type;
+        this.setHp(500);
+        this.setMaxHp(500);
+        this.setXP(100);
+        this.setAttackPoints(80);
     }
+
 
     public TypeElement getTypeElem() {
         return typeElem;
