@@ -1,3 +1,4 @@
+import factory.EnnemiFactory;
 import objects.items.Arme;
 import objects.items.Item;
 import objects.items.Potion;
@@ -15,9 +16,10 @@ public class Main {
     static int choixAction;
     static boolean inFight;
     static Scanner clavier;
+    static EnnemiFactory ennemiFactory;
     public static void main(String[] args) {
 
-
+        ennemiFactory = new EnnemiFactory();
         clavier = new Scanner(System.in);
         System.out.println("Choisissez une classe : \n1.Elf \n2.Humain");
         boolean validInput = false;
@@ -104,7 +106,7 @@ public class Main {
 
     private static void startBossFight() {
         // Créer boss fight Golem
-        ennemi = new Golem("Goldmann", TypeMonstre.BOSS, TypeElement.EAU);
+        ennemi = ennemiFactory.creerEnnemi("Golem", "Goldmann", TypeMonstre.BOSS);
         System.out.println("Vous tombez nez à nez avec un " + ennemi.getClass().getName().substring(11));
         inFight = true;
         while (inFight) {
@@ -118,7 +120,7 @@ public class Main {
         int lowLevelFight = (int)(Math.random() * ((2 - 0) + 1)) + 0;
         switch(lowLevelFight) {
             case 0:
-                ennemi = new Slime("Slimy", TypeMonstre.HAUTNIVEAU);
+                ennemi = ennemiFactory.creerEnnemi("Slime", "Slimy", TypeMonstre.HAUTNIVEAU);
                 System.out.println("Vous tombez nez à nez avec un " + ennemi.getClass().getName().substring(11));
                 inFight = true;
                 while (inFight) {
@@ -127,7 +129,7 @@ public class Main {
                 }
                 break;
             case 1:
-                ennemi = new Bat("Battler", TypeMonstre.HAUTNIVEAU);
+                ennemi = ennemiFactory.creerEnnemi("Bat", "Battler", TypeMonstre.HAUTNIVEAU);
                 System.out.println("Vous tombez nez à nez avec un " + ennemi.getClass().getName().substring(11));
                 inFight = true;
                 while (inFight) {
@@ -136,7 +138,7 @@ public class Main {
                 }
                 break;
             case 2:
-                ennemi = new Orc("Orkhas", TypeMonstre.HAUTNIVEAU);
+                ennemi = ennemiFactory.creerEnnemi("Orc", "Orkhas", TypeMonstre.HAUTNIVEAU);
                 System.out.println("Vous tombez nez à nez avec un " + ennemi.getClass().getName().substring(11));
                 inFight = true;
                 while (inFight) {
@@ -161,7 +163,7 @@ public class Main {
         int lowLevelFight = (int)(Math.random() * ((2 - 0) + 1)) + 0;
         switch(lowLevelFight) {
             case 0:
-                ennemi = new Slime("Slimy", TypeMonstre.BASNIVEAU);
+                ennemi = ennemiFactory.creerEnnemi("Slime", "Slimy", TypeMonstre.BASNIVEAU);
                 System.out.println("Vous tombez nez à nez avec un " + ennemi.getClass().getName().substring(11));
                 inFight = true;
                 while (inFight) {
@@ -170,7 +172,7 @@ public class Main {
                 }
                 break;
             case 1:
-                ennemi = new Bat("Battler", TypeMonstre.BASNIVEAU);
+                ennemi = ennemiFactory.creerEnnemi("Bat", "Battler", TypeMonstre.BASNIVEAU);
                 System.out.println("Vous tombez nez à nez avec un " + ennemi.getClass().getName().substring(11));
                 inFight = true;
                 while (inFight) {
@@ -179,7 +181,7 @@ public class Main {
                 }
                 break;
             case 2:
-                ennemi = new Orc("Orkhas", TypeMonstre.BASNIVEAU);
+                ennemi = ennemiFactory.creerEnnemi("Orc", "Orkhas", TypeMonstre.BASNIVEAU);
                 System.out.println("Vous tombez nez à nez avec un " + ennemi.getClass().getName().substring(11));
                 inFight = true;
                 while (inFight) {
@@ -224,7 +226,9 @@ public class Main {
 
             j1.addExperience(ennemi);
             if(ennemi.getItems() != null) {
+                System.out.println("Le " + ennemi.getName() + " laisse tomber : ");
                 for (int i = 0; i < ennemi.getItems().size(); i++) {
+                    System.out.println(ennemi.getItems().get(i));
                     j1.getLeSac().add(ennemi.getItems().get(i));
 
                 }

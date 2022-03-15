@@ -66,13 +66,4 @@ public class Bat extends Ennemi{
 
         }
     }
-
-    public boolean dropItem(List<Item> items){
-        if (!items.isEmpty()){
-            System.out.println(getName() + " laisse tomber " + items.toString() + ".");
-            return true;
-        }
-        System.out.println(getName() + " ne laisse tomber aucun item.");
-        return false;
-    }
 }

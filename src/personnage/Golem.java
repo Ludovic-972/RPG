@@ -13,14 +13,7 @@ public class Golem extends  Ennemi{
     private TypeElement typeElem;
     private Materiaux materiauBase;
 
-    public Golem(String name, int hp, int maxHp, int attackPoints, TypeMonstre type, TypeElement typeElem, int XP) {
-        super(name, hp, maxHp, attackPoints, XP);
-        items = new ArrayList<>();
-        materiauBase = new Materiaux(TypeMateriaux.MORCEAU_DE_PIERRE);
-        items.add(materiauBase);
-        this.type = type;
-        this.typeElem = typeElem;
-    }
+
 
     public Golem(String name, TypeMonstre type, TypeElement typeElem)
     {
@@ -30,6 +23,7 @@ public class Golem extends  Ennemi{
         items.add(materiauBase);
         this.type = type;
         this.typeElem = typeElem;
+        typeOrbe();
         this.setItems(items);
         this.setHp(500);
         this.setMaxHp(500);
@@ -73,13 +67,4 @@ public class Golem extends  Ennemi{
         return null;
     }
 
-
-    public boolean dropItem(List<Item> items){
-        if (! items.isEmpty()){
-            System.out.println(getName() + " laisse tomber " + items.toString() + ".");
-            return true;
-        }
-        System.out.println(getName() + " ne laisse tomber aucun item.");
-        return false;
-    }
 }
