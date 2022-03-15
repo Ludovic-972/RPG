@@ -12,14 +12,12 @@ public class Bat extends Ennemi{
     private Materiaux materiauBase;
     private TypeMonstre type;
 
-    public Bat(String name, int hp, int maxHp, int attackPoints, int XP) {
-        super(name, hp, maxHp, attackPoints, XP);
-    }
     public Bat(String name, TypeMonstre type) {
         super(name);
         this.items = new ArrayList<>();
         this.materiauBase = new Materiaux(TypeMateriaux.AILE);
         items.add(materiauBase);
+        this.setItems(items);
         this.type = type;
         setStats();
 

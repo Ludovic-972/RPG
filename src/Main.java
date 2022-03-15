@@ -104,14 +104,11 @@ public class Main {
 
     private static void startBossFight() {
         // Créer boss fight Golem
-        ennemi = new Golem("Goldmann", TypeMonstre.BOSS);
+        ennemi = new Golem("Goldmann", TypeMonstre.BOSS, TypeElement.EAU);
         System.out.println("Vous tombez nez à nez avec un " + ennemi.getClass().getName().substring(11));
         inFight = true;
         while (inFight) {
-            System.out.println(j1.getName() + "                              " + ennemi.getName()
-                    + "\nHP : " + j1.getHp() + "/" + j1.getMaxHp() + "                           HP : " + ennemi.getHp() + "/" + ennemi.getMaxHp()
-                    + "\nATK : " + j1.getAttackPoints() + "                             ATK : " + ennemi.getAttackPoints());
-            System.out.println("Choississez une action : \n1.Ouvrir le sac \n2.Attaquer");
+            showBattle();
             fightActions();
         }
 
@@ -125,10 +122,7 @@ public class Main {
                 System.out.println("Vous tombez nez à nez avec un " + ennemi.getClass().getName().substring(11));
                 inFight = true;
                 while (inFight) {
-                    System.out.println(j1.getName() + "                              " + ennemi.getName()
-                            + "\nHP : " + j1.getHp() + "/" + j1.getMaxHp() + "                           HP : " + ennemi.getHp() + "/" + ennemi.getMaxHp()
-                            + "\nATK : " + j1.getAttackPoints() + "                             ATK : " + ennemi.getAttackPoints());
-                    System.out.println("Choississez une action : \n1.Ouvrir le sac \n2.Attaquer");
+                    showBattle();
                     fightActions();
                 }
                 break;
@@ -137,10 +131,7 @@ public class Main {
                 System.out.println("Vous tombez nez à nez avec un " + ennemi.getClass().getName().substring(11));
                 inFight = true;
                 while (inFight) {
-                    System.out.println(j1.getName() + "                              " + ennemi.getName()
-                            + "\nHP : " + j1.getHp() + "/" + j1.getMaxHp() + "                           HP : " + ennemi.getHp() + "/" + ennemi.getMaxHp()
-                            + "\nATK : " + j1.getAttackPoints() + "                             ATK : " + ennemi.getAttackPoints());
-                    System.out.println("Choississez une action : \n1.Ouvrir le sac \n2.Attaquer");
+                    showBattle();
                     fightActions();
                 }
                 break;
@@ -149,10 +140,7 @@ public class Main {
                 System.out.println("Vous tombez nez à nez avec un " + ennemi.getClass().getName().substring(11));
                 inFight = true;
                 while (inFight) {
-                    System.out.println(j1.getName() + "                              " + ennemi.getName()
-                            + "\nHP : " + j1.getHp() + "/" + j1.getMaxHp() + "                           HP : " + ennemi.getHp() + "/" + ennemi.getMaxHp()
-                            + "\nATK : " + j1.getAttackPoints() + "                             ATK : " + ennemi.getAttackPoints());
-                    System.out.println("Choississez une action : \n1.Ouvrir le sac \n2.Attaquer");
+                    showBattle();
                     fightActions();
                 }
                 break;
@@ -160,6 +148,13 @@ public class Main {
                 break;
         }
 
+    }
+
+    private static void showBattle() {
+        System.out.println(j1.getName() + "                              " + ennemi.getName()
+                + "\nHP : " + j1.getHp() + "/" + j1.getMaxHp() + "                           HP : " + ennemi.getHp() + "/" + ennemi.getMaxHp()
+                + "\nATK : " + j1.getAttackPoints() + "                             ATK : " + ennemi.getAttackPoints());
+        System.out.println("Choississez une action : \n1.Ouvrir le sac \n2.Attaquer");
     }
 
     private static void startLowLevelFight() {
@@ -170,10 +165,7 @@ public class Main {
                 System.out.println("Vous tombez nez à nez avec un " + ennemi.getClass().getName().substring(11));
                 inFight = true;
                 while (inFight) {
-                    System.out.println(j1.getName() + "                              " + ennemi.getName()
-                            + "\nHP : " + j1.getHp() + "/" + j1.getMaxHp() + "                           HP : " + ennemi.getHp() + "/" + ennemi.getMaxHp()
-                            + "\nATK : " + j1.getAttackPoints() + "                             ATK : " + ennemi.getAttackPoints());
-                    System.out.println("Choississez une action : \n1.Ouvrir le sac \n2.Attaquer");
+                    showBattle();
                     fightActions();
                 }
                 break;
@@ -182,10 +174,7 @@ public class Main {
                 System.out.println("Vous tombez nez à nez avec un " + ennemi.getClass().getName().substring(11));
                 inFight = true;
                 while (inFight) {
-                    System.out.println(j1.getName() + "                              " + ennemi.getName()
-                            + "\nHP : " + j1.getHp() + "/" + j1.getMaxHp() + "                           HP : " + ennemi.getHp() + "/" + ennemi.getMaxHp()
-                            + "\nATK : " + j1.getAttackPoints() + "                             ATK : " + ennemi.getAttackPoints());
-                    System.out.println("Choississez une action : \n1.Ouvrir le sac \n2.Attaquer");
+                    showBattle();
                     fightActions();
                 }
                 break;
@@ -194,10 +183,7 @@ public class Main {
                 System.out.println("Vous tombez nez à nez avec un " + ennemi.getClass().getName().substring(11));
                 inFight = true;
                 while (inFight) {
-                    System.out.println(j1.getName() + "                              " + ennemi.getName()
-                            + "\nHP : " + j1.getHp() + "/" + j1.getMaxHp() + "                           HP : " + ennemi.getHp() + "/" + ennemi.getMaxHp()
-                            + "\nATK : " + j1.getAttackPoints() + "                             ATK : " + ennemi.getAttackPoints());
-                    System.out.println("Choississez une action : \n1.Ouvrir le sac \n2.Attaquer");
+                    showBattle();
                     fightActions();
                 }
                 break;

@@ -36,6 +36,7 @@ public class Slime extends Ennemi{
         this.materiauBase = new Materiaux(TypeMateriaux.SLIME_BALL);
         items.add(materiauBase);
         this.type = type;
+        this.setItems(items);
         setStats();
 
     }
