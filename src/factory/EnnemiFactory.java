@@ -11,6 +11,7 @@ public class EnnemiFactory extends EnnemiFactoryAbstract{
     private int maxHp;
     private int attackPoints;
     private TypeMonstre type;
+    private TypeElement typeElem;
     @Override
     public Ennemi creerEnnemi(String nomClasse) {
         switch (nomClasse){
@@ -21,7 +22,7 @@ public class EnnemiFactory extends EnnemiFactoryAbstract{
             case "Slime":
                 return ennemiFactory = new Slime(nom, type);
             case "Golem":
-                return ennemiFactory = new Golem(nom, type);
+                return ennemiFactory = new Golem(nom, type, typeElem);
         }
         return null;
     }
