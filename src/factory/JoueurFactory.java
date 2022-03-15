@@ -6,22 +6,17 @@ import personnage.Joueur;
 
 public class JoueurFactory extends JoueurFactoryAbstract{
     private Joueur factoryJoueur;
-    private String nom;
-    private int hp;
-    private int level;
-    private int xpNeed;
-    private int maxHp;
-    private int attackPoints;
-    private String clan;
+
 
     @Override
-    public Joueur creerJoueur(String nomClasse) {
+    public Joueur creerJoueur(String nomClasse, String nomPerso, int hp, int level, int XPNeeded, int maxHp, int attackPoints) {
         switch (nomClasse){
             case "Humain":
-                return factoryJoueur = new Humain(nom, hp, level, xpNeed, maxHp, attackPoints);
+                return factoryJoueur = new Humain(nomPerso, hp, level, XPNeeded, maxHp, attackPoints);
             case "Elf":
-                return factoryJoueur = new Elf(nom, hp, level, xpNeed, maxHp, attackPoints, clan);
+                return factoryJoueur = new Elf(nomPerso, hp, level, XPNeeded, maxHp, attackPoints);
+            default:
+                return null;
         }
-        return null;
     }
 }

@@ -1,4 +1,5 @@
 import factory.EnnemiFactory;
+import factory.JoueurFactory;
 import objects.items.Arme;
 import objects.items.Item;
 import objects.items.Potion;
@@ -11,15 +12,17 @@ public class Main {
     static Joueur j1 = null;
     static Ennemi ennemi = null;
     static String nomClasse;
-    static String nomClan;
+    static String nomPerso;
     static int choixClasse;
     static int choixAction;
     static boolean inFight;
     static Scanner clavier;
     static EnnemiFactory ennemiFactory;
+    static JoueurFactory joueurFactory;
     public static void main(String[] args) {
 
         ennemiFactory = new EnnemiFactory();
+        joueurFactory = new JoueurFactory();
         clavier = new Scanner(System.in);
         System.out.println("Choisissez une classe : \n1.Elf \n2.Humain");
         boolean validInput = false;
@@ -89,18 +92,19 @@ public class Main {
         System.out.println(j1.getLeSac().toString());
     }
     private static void createHumanChar() {
+        nomClasse = "Humain";
         System.out.println("Choisissez un nom : ");
-        nomClasse = clavier.next();
-        j1 = new Humain(nomClasse, 15, 1, 10, 15, 5);
+        nomPerso = clavier.next();
+      // j1 = new Humain(nomClasse, 15, 1, 10, 15, 5);
+        j1 = joueurFactory.creerJoueur(nomClasse, nomPerso, 15, 1, 10, 15, 5);
         System.out.println("Vous avez crée \nRace : Humain \nNom : " + j1.getName() + "\nNiveau : " + j1.getLevel() + "\nXP : " + j1.getXp() + "/" + j1.getXpNeeded() + "\nHP : " + j1.getHp() + "/" + j1.getMaxHp() + "\nATK : " + j1.getAttackPoints());
     }
 
     private static void createElfChar() {
+        nomClasse = "Elf";
         System.out.println("Choisissez un nom : ");
-        nomClasse = clavier.next();
-        System.out.println("Choisissez un nom de clan : ");
-        nomClan = clavier.next();
-        j1 = new Elf(nomClasse, 15, 1, 10, 15, 5, nomClan);
+        nomPerso = clavier.next();
+        j1 = joueurFactory.creerJoueur(nomClasse, nomPerso, 15, 1, 10, 15, 5);
         System.out.println("Vous avez crée \nRace : Elf \nNom : " + j1.getName() + "\nNiveau : " + j1.getLevel() + "\nXP : " + j1.getXp() + "/" + j1.getXpNeeded() + "\nHP : " + j1.getHp() + "/" + j1.getMaxHp() + "\nATK : " + j1.getAttackPoints());
     }
 
