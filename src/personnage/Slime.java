@@ -12,8 +12,6 @@ public class Slime extends Ennemi{
     private Materiaux materiauBase;
     private TypeMonstre type;
 
-
-
     public Materiaux getMateriauBase() {
         return materiauBase;
     }

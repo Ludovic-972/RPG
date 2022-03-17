@@ -5,7 +5,6 @@ import objects.items.Item;
 import objects.items.Potion;
 import personnage.*;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {

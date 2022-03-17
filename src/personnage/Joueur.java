@@ -1,6 +1,7 @@
 package personnage;
 
 import objects.sac.Sac;
+import strategie.ComportementAttaquer;
 
 public abstract class Joueur implements Personage {
     private String name;
@@ -11,6 +12,7 @@ public abstract class Joueur implements Personage {
     private int xp;
     private int xpNeeded;
     private int level;
+    protected ComportementAttaquer attaquer;
 
     public int getLevel() {
         return level;
@@ -56,6 +58,10 @@ public abstract class Joueur implements Personage {
         this.leSac = new Sac();
     }
 
+    public Joueur(){
+        //constructeur par défaut
+    }
+
     public String getName() {
         return name;
     }
@@ -88,8 +94,16 @@ public abstract class Joueur implements Personage {
         this.attackPoints = attackPoints;
     }
 
+    public ComportementAttaquer getAttaquer() {
+        return attaquer;
+    }
+
+    public void setAttaquer(ComportementAttaquer attaquer) {
+        this.attaquer = attaquer;
+    }
+
     public void attack(Ennemi ennemi){
-        ennemi.receiveDamages(this.getAttackPoints());
+        attaquer.attack(ennemi, this.getAttackPoints());
     }
 
     public void receiveDamages(int damages){

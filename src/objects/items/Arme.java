@@ -1,8 +1,6 @@
 package objects.items;
 
 public class Arme extends Item{
-
-
     @Override
     public String toString() {
         return "Arme";
