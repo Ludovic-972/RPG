@@ -93,6 +93,7 @@ public class Main {
                                 if (j1.getLeSac().get(i).getItem() instanceof Armure) {
                                     j1.equip((Armure) j1.getLeSac().get(i).getItem());
                                     armorPresent = false;
+                                    break;
                                 }
                             }
                             break;
