@@ -1,8 +1,8 @@
-package objects.items;
+package decorator;
 
-import decorator.DecorateurEquipement;
+import objects.items.Armure;
 
-public class ArmureBois extends DecorateurEquipement {
+public class ArmureBois extends DecorateurArmure {
 
     int addHp;
 
