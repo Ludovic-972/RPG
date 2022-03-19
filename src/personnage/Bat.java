@@ -1,8 +1,6 @@
 package personnage;
 
-import objects.items.Item;
-import objects.items.Materiaux;
-import objects.items.TypeMateriaux;
+import objects.items.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +9,6 @@ public class Bat extends Ennemi{
     private List<Item> items;
     private Materiaux materiauBase;
     private TypeMonstre type;
-
     public Bat(String name, TypeMonstre type) {
         super(name);
         this.items = new ArrayList<>();

@@ -89,6 +89,7 @@ public class Sac {
         }
     }
 
+
     public void remove(int index) {
         if(index < size){
             if(index == 0){

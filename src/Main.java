@@ -1,8 +1,10 @@
+import decorator.ArmureBois;
+import decorator.CasqueBois;
+import decorator.EpeeBois;
+import decorator.EpeeRouille;
 import factory.EnnemiFactory;
 import factory.JoueurFactory;
-import objects.items.Arme;
-import objects.items.Item;
-import objects.items.Potion;
+import objects.items.*;
 import personnage.*;
 
 import java.util.Scanner;
@@ -18,10 +20,16 @@ public class Main {
     static Scanner clavier;
     static EnnemiFactory ennemiFactory;
     static JoueurFactory joueurFactory;
+    static Armure armure;
+    static Arme arme;
+    static boolean armorPresent;
+    static boolean armePresent;
+    static String affichageActions;
     public static void main(String[] args) {
 
         ennemiFactory = new EnnemiFactory();
         joueurFactory = new JoueurFactory();
+        arme = new Arme();
         clavier = new Scanner(System.in);
         System.out.println("Choisissez une classe : \n1.Elf \n2.Humain");
         boolean validInput = false;
@@ -41,15 +49,22 @@ public class Main {
                     break;
             }
         }
-        Item potion = new Potion();
-        Item arme = new Arme();
-        for(int i = 0; i < 5; i++)
-        {
-            j1.getLeSac().add(potion);
-        }
-        j1.getLeSac().add(arme);
+
         while(true) {
-            System.out.println("Choississez une action : \n1.Ouvrir le sac \n2.Affronter un monstre \n3.Afficher vos stats");
+
+            if(armorPresent)
+            {
+                affichageActions = "Choississez une action : \n1.Ouvrir le sac \n2.Affronter un monstre \n3.Afficher vos stats\n4.Equiper armure";
+            }
+            if(armePresent) {
+                if(armorPresent) affichageActions += "\n5.Equiper arme";
+                else affichageActions = "Choississez une action : \n1.Ouvrir le sac \n2.Affronter un monstre \n3.Afficher vos stats\n5.Equiper arme";
+            }
+            if(!armePresent && !armorPresent)
+            {
+                affichageActions = "Choississez une action : \n1.Ouvrir le sac \n2.Affronter un monstre \n3.Afficher vos stats";
+            }
+            System.out.println(affichageActions);
             boolean validInput2 = false;
             while (validInput2 == false) {
                 choixAction = clavier.nextInt();
@@ -76,10 +91,44 @@ public class Main {
                         }
                         break;
                     case 3:
-                        validInput2 = true;
+
+                    validInput2 = true;
                         System.out.println("Nom : " + j1.getName() + "\nNiveau : " + j1.getLevel() + "\nXP : " + j1.getXp() + "/" + j1.getXpNeeded() + "\nHP : " + j1.getHp()
                                 + "/" + j1.getMaxHp() + "\nATK : " + j1.getAttackPoints());
+                        if(j1.getArme() != null) {
+                        System.out.println(j1.getArme().getDescription());
+                    }
+                        if(j1.getArmure() != null) {
+                            System.out.println(j1.getArmure().getDescription());
+                        }
                         break;
+                    case 4:
+                        validInput2 = true;
+                        if(armorPresent) {
+                            for (int i = 0; i < j1.getLeSac().getSize(); i++) {
+                                if (j1.getLeSac().get(i).getItem() instanceof Armure) {
+                                    j1.equipArmure((Armure) j1.getLeSac().get(i).getItem());
+                                    armorPresent = false;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                        break;
+                    case 5:
+                        validInput2 = true;
+                        if(armePresent) {
+                            for (int i = 0; i < j1.getLeSac().getSize(); i++) {
+                                if (j1.getLeSac().get(i).getItem() instanceof Arme) {
+                                    j1.equipArme((Arme) j1.getLeSac().get(i).getItem());
+                                    armePresent = false;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                        break;
+
 
                 }
             }
@@ -89,13 +138,28 @@ public class Main {
     private static void showBag()
     {
         System.out.println(j1.getLeSac().toString());
+        for(int i = 0; i<j1.getLeSac().getSize(); i++)
+        {
+          if(j1.getLeSac().get(i).getItem() instanceof Armure)
+          {
+              armorPresent = true;
+          }
+          if(j1.getLeSac().get(i).getItem() instanceof Arme)
+          {
+              armePresent = true;
+          }
+        }
+
     }
+
     private static void createHumanChar() {
         nomClasse = "Humain";
         System.out.println("Choisissez un nom : ");
         nomPerso = clavier.next();
-      // j1 = new Humain(nomClasse, 15, 1, 10, 15, 5);
         j1 = joueurFactory.creerJoueur(nomClasse, nomPerso, 15, 1, 10, 15, 5);
+        armure = new Armure();
+        armure = new CasqueBois(armure, 2);
+        j1.equipArmure(armure);
         System.out.println("Vous avez crée \nRace : Humain \nNom : " + j1.getName() + "\nNiveau : " + j1.getLevel() + "\nXP : " + j1.getXp() + "/" + j1.getXpNeeded() + "\nHP : " + j1.getHp() + "/" + j1.getMaxHp() + "\nATK : " + j1.getAttackPoints());
     }
 
@@ -104,8 +168,14 @@ public class Main {
         System.out.println("Choisissez un nom : ");
         nomPerso = clavier.next();
         j1 = joueurFactory.creerJoueur(nomClasse, nomPerso, 15, 1, 10, 15, 5);
+        armure = new Armure();
+        armure = new CasqueBois(armure, 2);
+        j1.equipArmure(armure);
         System.out.println("Vous avez crée \nRace : Elf \nNom : " + j1.getName() + "\nNiveau : " + j1.getLevel() + "\nXP : " + j1.getXp() + "/" + j1.getXpNeeded() + "\nHP : " + j1.getHp() + "/" + j1.getMaxHp() + "\nATK : " + j1.getAttackPoints());
+
     }
+
+
 
     private static void startBossFight() {
         // Créer boss fight Golem
@@ -132,6 +202,7 @@ public class Main {
                 }
                 break;
             case 1:
+
                 ennemi = ennemiFactory.creerEnnemi("Bat", "Battler", TypeMonstre.HAUTNIVEAU);
                 System.out.println("Vous tombez nez à nez avec un " + ennemi.getClass().getName().substring(11));
                 inFight = true;
@@ -142,6 +213,8 @@ public class Main {
                 break;
             case 2:
                 ennemi = ennemiFactory.creerEnnemi("Orc", "Orkhas", TypeMonstre.HAUTNIVEAU);
+                arme = new EpeeRouille(arme, 8);
+                ennemi.getItems().add(arme);
                 System.out.println("Vous tombez nez à nez avec un " + ennemi.getClass().getName().substring(11));
                 inFight = true;
                 while (inFight) {
@@ -167,6 +240,10 @@ public class Main {
         switch(lowLevelFight) {
             case 0:
                 ennemi = ennemiFactory.creerEnnemi("Slime", "Slimy", TypeMonstre.BASNIVEAU);
+                armure = new ArmureBois(armure, 3);
+                ennemi.getItems().add(armure);
+                arme = new EpeeBois(arme, 2);
+                ennemi.getItems().add(arme);
                 System.out.println("Vous tombez nez à nez avec un " + ennemi.getClass().getName().substring(11));
                 inFight = true;
                 while (inFight) {
@@ -176,6 +253,8 @@ public class Main {
                 break;
             case 1:
                 ennemi = ennemiFactory.creerEnnemi("Bat", "Battler", TypeMonstre.BASNIVEAU);
+                armure = new ArmureBois(armure, 3);
+                ennemi.getItems().add(armure);
                 System.out.println("Vous tombez nez à nez avec un " + ennemi.getClass().getName().substring(11));
                 inFight = true;
                 while (inFight) {
@@ -185,6 +264,8 @@ public class Main {
                 break;
             case 2:
                 ennemi = ennemiFactory.creerEnnemi("Orc", "Orkhas", TypeMonstre.BASNIVEAU);
+                armure = new ArmureBois(armure, 3);
+                ennemi.getItems().add(armure);
                 System.out.println("Vous tombez nez à nez avec un " + ennemi.getClass().getName().substring(11));
                 inFight = true;
                 while (inFight) {

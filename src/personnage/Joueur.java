@@ -1,5 +1,8 @@
 package personnage;
 
+import objects.items.Arme;
+import objects.items.Armure;
+import objects.items.Item;
 import objects.sac.Sac;
 import strategie.ComportementAttaquer;
 
@@ -13,6 +16,16 @@ public abstract class Joueur implements Personage {
     private int xpNeeded;
     private int level;
     protected ComportementAttaquer attaquer;
+    private Armure armure;
+    private Arme arme;
+
+    public Arme getArme() {
+        return arme;
+    }
+
+    public void setArme(Arme arme) {
+        this.arme = arme;
+    }
 
     public int getLevel() {
         return level;
@@ -125,5 +138,42 @@ public abstract class Joueur implements Personage {
                 return true;
         }
         return false;
+    }
+
+    public Armure getArmure() {
+        return armure;
+    }
+
+    public void setArmure(Armure armure) {
+        this.armure = armure;
+    }
+
+    public Ennemi getEnnemi() {
+        return ennemi;
+    }
+
+    public void setEnnemi(Ennemi ennemi) {
+        this.ennemi = ennemi;
+    }
+
+    public void equipArmure(Armure armure) {
+        if(!(this.getArmure() == armure)) {
+            this.setArmure(armure);
+            this.maxHp += armure.getAddHp();
+            this.hp += armure.getAddHp();
+
+
+        }
+
+    }
+
+    public void equipArme(Arme arme) {
+        if(!(this.getArme() == arme)) {
+            this.setArme(arme);
+            this.attackPoints += arme.getAddAtk();
+
+
+        }
+
     }
 }
