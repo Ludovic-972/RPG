@@ -6,7 +6,10 @@ import factory.EnnemiFactory;
 import factory.JoueurFactory;
 import objects.items.*;
 import personnage.*;
+import singleton.LogSingleton;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
@@ -25,8 +28,11 @@ public class Main {
     static boolean armorPresent;
     static boolean armePresent;
     static String affichageActions;
+    static Chrono chrono;
+    static int nbKilled;
     public static void main(String[] args) {
-
+        chrono = new Chrono();
+        chrono.start();
         ennemiFactory = new EnnemiFactory();
         joueurFactory = new JoueurFactory();
         arme = new Arme();
@@ -305,6 +311,7 @@ public class Main {
 
     private static void endFight() {
         if (ennemi.getHp() <= 0) {
+            nbKilled++;
             System.out.println(ennemi.getName() + " a été vaincu(e) ! ");
             System.out.println("Vous recevez " + ennemi.getXP() + " point(s) d'expérience !");
 
@@ -330,10 +337,28 @@ public class Main {
             j1.setHp(j1.getMaxHp());
             ennemi.setHp(ennemi.getMaxHp());
             inFight = false;
-
+            endGame();
         }
 
 
+    }
+
+    private static void endGame() {
+        chrono.stop();
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+        LogSingleton log1 = LogSingleton.getInstance();
+        LogSingleton log2 = LogSingleton.getInstance();
+        LogSingleton log3 = LogSingleton.getInstance();
+        log3.logTimeCreated(sdf.format(d));
+        log1.logTimePlayed(chrono.getDureeTxt());
+        log2.logCharacter(j1);
+        log1.logSac(j1.getLeSac().toString());
+        if(j1.getArme() != null) log3.logArme(j1.getArme().getDescription());
+        if(j1.getArmure() != null)  log2.logArmure(j1.getArmure().getDescription());
+        log1.logEnnemiesKilled(nbKilled);
+        System.out.println("Un résumé de fin de partie est disponible dans le fichier statistiques_partie.txt.\nMerci d'avoir joué !");
+        System.exit(0);
     }
 }
 
