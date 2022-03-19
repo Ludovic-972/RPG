@@ -1,0 +1,25 @@
+Fichié crée le 2022-03-19 06:08:024
+
+Temps joué : 48 s
+Statistiques du joueur :  
+Nom : Onchigo
+Niveau : 1
+XP : 3/10
+HP : 20/20
+ATK : 7
+
+Contenu du sac (5 item(s) sur 30) :
+1-SLIME_BALL
+2-Armure en bois
+3-Epee en bois
+4-AILE
+5-Armure en bois
+
+Liste d'armes : 
+Une épée en bois, souvent utilisée pour s'entraîner. +2 ATK !
+
+Liste d'armures : 
+Un casque en bois, fragile mais efficace ! +2 HP MAX !`
+Une armure en bois, fragile mais efficace ! +3 HP MAX !
+
+Nombre d'ennemies vaincus : 2
