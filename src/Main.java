@@ -60,7 +60,7 @@ public class Main {
                 if(armorPresent) affichageActions += "\n5.Equiper arme";
                 else affichageActions = "Choississez une action : \n1.Ouvrir le sac \n2.Affronter un monstre \n3.Afficher vos stats\n5.Equiper arme";
             }
-            else if(!(armePresent && armorPresent))
+            if(!armePresent && !armorPresent)
             {
                 affichageActions = "Choississez une action : \n1.Ouvrir le sac \n2.Affronter un monstre \n3.Afficher vos stats";
             }
